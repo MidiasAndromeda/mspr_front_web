@@ -16,6 +16,7 @@
               </p>
               <div id="qrcode">
                 <!-- <img src="./../../public/qrcode.png" class="img-fluid" /> -->
+                <qrcode-vue :value="qrcode.id" renderAs="svg" class="qrcode-svg"></qrcode-vue>
               </div>
               <hr />
               <p class="text-cta mb-4">
@@ -31,15 +32,7 @@
   </div>
 </template>
 
-<script>
-// @ is an alias to /src
-// import HelloWorld from '@/components/HelloWorld.vue'
-import Vue from "vue";
-import Component from "vue-class-component";
-
-@Component
-export default class Home extends Vue {}
-</script>
+<script src="./Home.ts"></script>
 
 <style scoped>
 h3 {
@@ -82,8 +75,9 @@ p {
   height: 120px;
   margin: 0 auto;
   padding: 5px;
-  background: #fff url('./../../public/qrcode.png') no-repeat;
-  background-size: 100%;
+  /* background: #fff url("./../../public/qrcode.png") no-repeat;
+  background-size: 100%; */
+  background: #fff;
   border-radius: 5px;
   box-shadow: 0 2px 12px 0 hsla(0, 0%, 0%, 0.25);
   -moz-transition: width 0.5 ease, height 0.5s ease;
@@ -94,6 +88,10 @@ p {
 #qrcode:hover {
   height: 200px;
   width: 200px;
+}
+.qrcode-svg {
+  width: 100%;
+  height: 100%;
 }
 hr {
   width: 80%;
