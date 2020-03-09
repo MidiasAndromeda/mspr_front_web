@@ -1,35 +1,50 @@
 <template>
-  <div class="home">
+  <div class="login">
     <div class="container">
       <div class="row">
         <div class="col-lg-6 col-md-9 col-sm-12 centered-container">
           <div class="main-container p-4">
             <div class="title p-2 mb-2">
-              <h3>
+              <h3 @click="redirectToHome()">
                 <i class="material-icons">android</i> Codlify
               </h3>
             </div>
             <div class="text-center">
               <p>
-                Use the
-                <b>Codlify app</b> to scan this
+                Sign in to with an
+                <b>admin account</b> please
               </p>
-              <div id="qrcode">
-                <!-- <img src="./../../public/qrcode.png" class="img-fluid" /> -->
-                <qrcode :value="qrcode._id" :options="{ margin: 0, height: 150, width: 150 }"></qrcode>
-                <!-- <qrcode-vue :value="qrcode.id" renderAs="svg" class="qrcode-svg"></qrcode-vue> -->
+              <div class="form-group mx-sm-3 mb-2">
+                <label for="inputUsername" class="sr-only">
+                  <i class="material-icons">face</i>
+                </label>
+
+                <input
+                  type="text"
+                  class="form-control"
+                  id="inputUsername"
+                  placeholder="Username..."
+                  v-model="username"
+                />
+              </div>
+              <div class="form-group mx-sm-3 mb-2">
+                <label for="inputPassword" class="sr-only">
+                  <i class="material-icons">vpn_key</i>
+                </label>
+                <input
+                  type="password"
+                  class="form-control"
+                  id="inputPassword"
+                  placeholder="Password..."
+                  v-model="password"
+                />
               </div>
               <hr />
               <p class="text-cta mb-4">
                 You need to have a
                 <b>verified admin account</b> to go to the administration panel.
               </p>
-              <input
-                class="btn-cta mb-2"
-                value="go to administration panel"
-                type="button"
-                @click="redirectToLogin()"
-              />
+              <input class="btn-cta mb-2" value="I want to sign in" type="button" @click="sendLoginForm()" />
             </div>
           </div>
         </div>
@@ -38,7 +53,7 @@
   </div>
 </template>
 
-<script src="./Home.ts"></script>
+<script src="./LogIn.ts"></script>
 
 <style scoped>
 h3 {
@@ -115,5 +130,9 @@ hr {
   letter-spacing: 0.9px;
   text-transform: uppercase;
   padding: 8px 15px;
+}
+
+.btn-goback {
+  margin-top: 30px;
 }
 </style>

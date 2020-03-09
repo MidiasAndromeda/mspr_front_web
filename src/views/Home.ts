@@ -2,21 +2,31 @@
 import Vue from "vue";
 import Component from "vue-class-component";
 import QRCode from "./../interfaces/qrcode.interface";
-import QrcodeVue from 'qrcode.vue'
+const VueQrcode = require("@chenfengyuan/vue-qrcode");
+
+
+Vue.component(VueQrcode.name, VueQrcode);
 
 @Component({
-    components: {QrcodeVue}
+    components: {VueQrcode}
 })
 export default class Home extends Vue {
-    qrcode: QRCode | null = null;
+    qrcode: QRCode = {
+        id: '',
+        code: '',
+        discountRate: 0
+    };
 
     mounted() {
-        fetch("https://hidden-savannah-62572.herokuapp.com")
+        fetch("https://hidden-savannah-62572.herokuapp.com/qrcode")
             .then(res => res.json())
             .then(res => {
                 this.qrcode = res;
-                console.log(this.qrcode);
             })
             .catch(err => console.error(err));
+    }
+
+    redirectToLogin() {
+        this.$router.push('/login');
     }
 }
