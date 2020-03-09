@@ -11,6 +11,11 @@ const routes = [
     component: Home
   },
   {
+    path: '/qrcode/:id',
+    name: 'QrCode',
+    component: Home
+  },
+  {
     path: '/login',
     name: 'Login',
     component: () => import('../views/LogIn.vue')

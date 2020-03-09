@@ -8,7 +8,7 @@ const VueQrcode = require("@chenfengyuan/vue-qrcode");
 Vue.component(VueQrcode.name, VueQrcode);
 
 @Component({
-    components: {VueQrcode}
+    components: { VueQrcode }
 })
 export default class Home extends Vue {
     qrcode: QRCode = {
@@ -18,7 +18,7 @@ export default class Home extends Vue {
     };
 
     mounted() {
-        fetch("https://hidden-savannah-62572.herokuapp.com/qrcode")
+        fetch('https://hidden-savannah-62572.herokuapp.com/qrcode')
             .then(res => res.json())
             .then(res => {
                 this.qrcode = res;

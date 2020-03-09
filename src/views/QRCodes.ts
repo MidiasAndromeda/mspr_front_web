@@ -2,8 +2,13 @@
 import Vue from "vue";
 import Component from "vue-class-component";
 import QRCode from '@/interfaces/qrcode.interface';
+const VueQrcode = require("@chenfengyuan/vue-qrcode");
+
+
+Vue.component(VueQrcode.name, VueQrcode);
 
 @Component({
+    components: { VueQrcode }
 })
 export default class QRCodes extends Vue {
     qrcodes: QRCode[] = [{
@@ -14,12 +19,17 @@ export default class QRCodes extends Vue {
     displayAddForm: boolean = false;
     code: string = '';
     discountRate: number = 0;
+    showDetailedQrCode: boolean = false;
+    idQrCode: string = '';
 
     mounted() {
         this.qrcodes = [];
         this.displayAddForm = false;
         this.code = '';
         this.discountRate = 0;
+        this.showDetailedQrCode = false;
+        this.idQrCode = '';
+
         fetch("https://hidden-savannah-62572.herokuapp.com/qrcodes")
             .then(res => res.json())
             .then(res => this.qrcodes = res)
@@ -78,6 +88,11 @@ export default class QRCodes extends Vue {
                     .catch(err => console.error(err));
             })
             .catch(err => console.error(err));
+    }
 
+    showQrCode(id: string) {
+        this.showDetailedQrCode = !this.showDetailedQrCode;
+        if (this.showDetailedQrCode)
+            this.idQrCode = id;
     }
 }

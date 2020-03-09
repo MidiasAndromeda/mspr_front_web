@@ -28,6 +28,10 @@
                     <td class="text-right">{{ qrcode.discountRate }} %</td>
                     <td>
                       <span
+                        class="badge badge-pill badge-light mr-2"
+                        v-on:click="showQrCode(qrcode._id)"
+                      >Show</span>
+                      <span
                         class="badge badge-pill badge-danger"
                         v-on:click="deleteQrCode(qrcode._id)"
                       >Delete</span>
@@ -35,7 +39,9 @@
                   </tr>
                 </tbody>
               </table>
-
+              <div id="qrcode" class="mb-4" v-if="showDetailedQrCode">
+                <qrcode v-bind:value="idQrCode" :options="{ margin: 0, height: 150, width: 150 }"></qrcode>
+              </div>
               <input
                 class="btn-cta mb-2"
                 v-bind:value="!displayAddForm ? 'create a new qrcode' : 'hide the form'"
