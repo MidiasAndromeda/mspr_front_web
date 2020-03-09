@@ -10,7 +10,7 @@
               </h3>
             </div>
             <div class="text-center">
-              <table class="table table-hover">
+              <table class="table">
                 <thead>
                   <tr>
                     <th scope="col">
