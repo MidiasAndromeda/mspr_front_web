@@ -39,9 +39,11 @@
                   </tr>
                 </tbody>
               </table>
-              <div id="qrcode" class="mb-4" v-if="showDetailedQrCode">
-                <qrcode v-bind:value="idQrCode" :options="{ margin: 0, height: 150, width: 150 }"></qrcode>
-              </div>
+              <transition name="bounce">
+                <div id="qrcode" class="mb-4" v-if="showDetailedQrCode">
+                  <qrcode v-bind:value="idQrCode" :options="{ margin: 0, height: 150, width: 150 }"></qrcode>
+                </div>
+              </transition>
               <input
                 class="btn-cta mb-2"
                 v-bind:value="!displayAddForm ? 'create a new qrcode' : 'hide the form'"
@@ -171,5 +173,23 @@ table {
 
 .badge {
   cursor: pointer;
+}
+
+.bounce-enter-active {
+  animation: bounce-in .5s;
+}
+.bounce-leave-active {
+  animation: bounce-in .5s reverse;
+}
+@keyframes bounce-in {
+  0% {
+    transform: scale(0);
+  }
+  50% {
+    transform: scale(1.3);
+  }
+  100% {
+    transform: scale(1);
+  }
 }
 </style>

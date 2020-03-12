@@ -15,9 +15,7 @@
                 <b>Codlify app</b> to scan this
               </p>
               <div id="qrcode">
-                <!-- <img src="./../../public/qrcode.png" class="img-fluid" /> -->
                 <qrcode v-bind:value="qrcode._id" :options="{ margin: 0, height: 150, width: 150 }"></qrcode>
-                <!-- <qrcode-vue :value="qrcode.id" renderAs="svg" class="qrcode-svg"></qrcode-vue> -->
               </div>
               <hr />
               <p class="text-cta mb-4">
